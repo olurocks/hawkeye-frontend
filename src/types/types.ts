@@ -73,7 +73,7 @@ export interface TweetGridProps {
 export interface IMedia {
   media_key: string;
   type: string;
-  urls?: string[]; // optional because not marked `required` in the schema
+  url?: string; // optional because not marked `required` in the schema
   preview_image_url?: string;
   alt_text?: string;
 }
@@ -92,6 +92,7 @@ export interface ITweet {
   reply_count?: number;
   quote_count?: number;
   hasVideo?: boolean;
+  newTweetsCount?: number;
 }
 
 export interface IEntities {

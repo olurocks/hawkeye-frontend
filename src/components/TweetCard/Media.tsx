@@ -1,14 +1,16 @@
 import React from "react";
 import { TweetCardProps } from "../../types/types";
 import { Box, Grid, CardMedia } from "@mui/material";
-import { VideoPlayer } from "../../hooks/videoPlayer";
 import { TweetCardColors } from "../../utils/TweetCardColors";
 import { MediaModal } from "../../hooks/MediaModal";
+import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 
 export const Media: React.FC<TweetCardProps> = ({ tweet }) => {
-    const colors =TweetCardColors()
+  const colors = TweetCardColors();
   const [selectedMedia, setSelectedMedia] = React.useState<any>(null);
-  const [playingMediaIndex, setPlayingMediaIndex] = React.useState<number | null>(null);
+  const [playingMediaIndex, setPlayingMediaIndex] = React.useState<
+    number | null
+  >(null);
 
   const handleMediaClick = (media: any) => {
     setSelectedMedia(media);
@@ -62,7 +64,7 @@ export const Media: React.FC<TweetCardProps> = ({ tweet }) => {
           ];
           const borderColor = borderColors[index % borderColors.length];
           const gridArea =
-            ((tweet.media ?? []).length) === 3 ? `item${index}` : undefined;
+            (tweet.media ?? []).length === 3 ? `item${index}` : undefined;
 
           return (
             <Box
@@ -88,12 +90,12 @@ export const Media: React.FC<TweetCardProps> = ({ tweet }) => {
               onMouseEnter={() => handleMediaHover(index)}
               onMouseLeave={handleMediaLeave}
             >
-              {item.type === "photo" && item.urls && item.urls.length > 0 ? (
+              {item.type === "photo" ? (
                 <>
                   <CardMedia
                     component="img"
                     height="194"
-                    src={item.urls[0]}
+                    src={item.url}
                     alt={item.alt_text || "Tweet photo"}
                     sx={{
                       filter: "contrast(1.1) saturate(1.2)",
@@ -117,9 +119,7 @@ export const Media: React.FC<TweetCardProps> = ({ tweet }) => {
                     }}
                   />
                 </>
-              ) : (item.type === "video" || item.type === "animated_gif") &&
-                item.urls &&
-                item.urls.length > 0 ? (
+              ) : item.type === "video" || item.type === "animated_gif" ? (
                 <>
                   <Box
                     sx={{
@@ -129,19 +129,17 @@ export const Media: React.FC<TweetCardProps> = ({ tweet }) => {
                       minHeight: "194px",
                     }}
                   >
-                    <VideoPlayer
-                      videoUrl={item.urls[0]}
-                      previewUrl={item.preview_image_url}
-                      controls={false}
-                      autoPlay={playingMediaIndex === index}
-                      loop={playingMediaIndex === index}
-                      muted={true}
-                      style={{
-                        objectFit: "cover",
-                        width: "100%",
-                        height: "100%",
-                        minHeight: "194px",
+                    {/* Display preview image instead of video */}
+                    <CardMedia
+                      component="img"
+                      height="194"
+                      src={item.url || "/placeholder-video.jpg"}
+                      alt={item.alt_text || "Video preview"}
+                      sx={{
                         filter: "contrast(1.1) saturate(1.2)",
+                        height: "100%",
+                        width: "100%",
+                        objectFit: "cover",
                       }}
                     />
 
@@ -160,34 +158,33 @@ export const Media: React.FC<TweetCardProps> = ({ tweet }) => {
                       }}
                     />
 
-                    {playingMediaIndex !== index && (
-                      <Box
-                        sx={{
-                          position: "absolute",
-                          top: "50%",
-                          left: "50%",
-                          transform: "translate(-50%, -50%)",
-                          width: "60px",
-                          height: "60px",
-                          borderRadius: "50%",
-                          backgroundColor: colors.blue,
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          border: `3px solid ${borderColor}`,
-                          transition: "transform 0.3s ease",
-                          "&:before": {
-                            content: '""',
-                            width: 0,
-                            height: 0,
-                            borderTop: "15px solid transparent",
-                            borderBottom: "15px solid transparent",
-                            borderLeft: `25px solid ${borderColor}`,
-                            marginLeft: "5px",
-                          },
-                        }}
-                      />
-                    )}
+                    {/* Always show play button for videos */}
+                    <Box
+                      sx={{
+                        position: "absolute",
+                        top: "50%",
+                        left: "50%",
+                        transform: "translate(-50%, -50%)",
+                        width: "60px",
+                        height: "60px",
+                        borderRadius: "50%",
+                        backgroundColor: colors.blue,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        border: `3px solid ${borderColor}`,
+                        transition: "transform 0.3s ease",
+                        "&:before": {
+                          content: '""',
+                          width: 0,
+                          height: 0,
+                          borderTop: "15px solid transparent",
+                          borderBottom: "15px solid transparent",
+                          borderLeft: `25px solid ${borderColor}`,
+                          marginLeft: "5px",
+                        },
+                      }}
+                    />
                   </Box>
                 </>
               ) : null}

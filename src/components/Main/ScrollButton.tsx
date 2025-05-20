@@ -4,6 +4,8 @@ import { Zoom, Box, Fab } from "@mui/material";
 import KeyboardArrowUp from "@mui/icons-material/KeyboardArrowUp";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import { TweetsContext } from "../../hooks/TweetsContext";
+
+
 function ScrollToTopFab() {
   // Use `window` instead of `body` as `document` will be `undefined` when the
   // hooks first runs. By default, useScrollTrigger will attach itself to `window`.

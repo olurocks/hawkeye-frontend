@@ -49,9 +49,7 @@ export const TweetGrid: React.FC<TweetGridProps> = ({
     setPage(newPage);
   };
 
-  useEffect(() => {
-    setPage(1);
-  }, [tweets]);
+
 
   useEffect(() => {
     if (isTransitioning) {

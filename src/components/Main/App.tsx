@@ -15,12 +15,13 @@ import { AppColors } from "./Colors";
 import ScrollToTopFab from "./ScrollButton";
 import { generateGridIcons } from "../../utils/helpers";
 import { TweetsProvider } from "../../hooks/TweetsContext";
+import { NewTweetsNotification } from "./NewTweets";
 // Generate evenly spaced icons in a grid system
-
 
 const App = () => {
   const [randomIcons] = useState(() => generateGridIcons(50)); // Generate 50 grid-based icons
-  const { tweets, isConnected, error, loading } = useSocketTweets();
+  const { tweets, isConnected, error, loading, newTweetsCount, showNewTweets } =
+    useSocketTweets();
   const { mode } = useAppTheme();
   const colors = AppColors();
   const theme = useTheme();
@@ -29,13 +30,12 @@ const App = () => {
 
   if (isMobile) {
     return (
-      
       <Box
         sx={{
           outline: "2px solid red", // ADD THIS
           display: "flex",
           flexDirection: "column",
-          minHeight: "100vh",
+          minHeight: "100%",
           position: "relative",
           backgroundColor: colors.background,
         }}
@@ -74,7 +74,7 @@ const App = () => {
             <TweetsProvider>
               <ScrollToTopFab />
             </TweetsProvider>
-            
+
             <Box
               sx={{
                 fontFamily: "'Bangers', cursive",
@@ -146,6 +146,8 @@ const App = () => {
           loading={loading}
         />
       </Container>
+
+      <NewTweetsNotification count={newTweetsCount} onClick={showNewTweets} />
 
       {/* Footer */}
       <Box
