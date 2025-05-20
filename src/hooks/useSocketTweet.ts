@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { io } from "socket.io-client";
 import { ITweet } from "../types/types";
 
-const SOCKET_SERVER_URL = "http://localhost:3000"; // Update to your server port
+const SOCKET_SERVER_URL = "https://hawkeye-1ueo.onrender.com"; // Update to your server port
 
 export const useSocketTweets = (initialTweets = []) => {
   const [tweets, setTweets] = useState<ITweet[]>(initialTweets);
