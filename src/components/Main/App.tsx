@@ -9,7 +9,6 @@ import {
 import Navbar from "../Navbar/Navbar";
 import { TweetGrid } from "../TweetGrid/TweetGrid";
 import { useSocketTweets } from "../../hooks/useSocketTweet";
-import * as icons from "../icons";
 import { useAppTheme } from "../../utils/ThemeContext";
 import { AppColors } from "./Colors";
 import ScrollToTopFab from "./ScrollButton";
@@ -22,11 +21,10 @@ const App = () => {
   const [randomIcons] = useState(() => generateGridIcons(50)); // Generate 50 grid-based icons
   const { tweets, isConnected, error, loading, newTweetsCount, showNewTweets } =
     useSocketTweets();
-  const { mode } = useAppTheme();
   const colors = AppColors();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const isTablet = useMediaQuery(theme.breakpoints.down("md"));
+  // const isTablet = useMediaQuery(theme.breakpoints.down("md"));
 
   if (isMobile) {
     return (
