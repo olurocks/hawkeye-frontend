@@ -2,7 +2,7 @@ import { CardHeader } from "@mui/material"
 import { comicFonts } from "../../utils/comicFonts"
 import { TweetCardColors } from "../../utils/TweetCardColors"
 import { Avatar, Typography } from "@mui/material"
-import { ITweet, TweetCardProps } from "../../types/types"
+import { TweetCardProps } from "../../types/types";
 import { formatDate } from "../../utils/formatDate"
 
 

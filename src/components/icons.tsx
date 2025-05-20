@@ -8,7 +8,6 @@ const colors = {
   dark: "#111111", // Almost black
   light: "#FFFDF7", // Off-white
   outline: "#000000", // Black for outlines
-  green: "",
 };
 
 export const BombIcon = () => (

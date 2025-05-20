@@ -1,25 +1,23 @@
 import { Box } from "@mui/system";
-import { ITweet, TweetGridProps } from "../../types/types";
+import { ITweet } from "../../types/types";
 import { TweetGridSkeleton } from "./Skeleton";
-import { useState, useEffect } from "react";
 import { TweetCard } from "../TweetCard/TweetCard";
 import { useMediaQuery } from "@mui/material";
-import useTheme from "@mui/system";
 
 interface GridContainerProps {
   tweets: ITweet[];
   loading: Boolean;
   currentPage: number;
   onPageChange: (event: React.ChangeEvent<unknown>, value: number) => void;
-  itemVariants:any
-  isMobile: boolean
+  itemVariants: any;
+  isMobile: boolean;
 }
 
 export const GridContainer: React.FC<GridContainerProps> = ({
   tweets,
   loading,
   currentPage,
-  onPageChange
+  onPageChange,
 }) => {
   const tweetsPerPage = 13;
   const startIndex = (currentPage - 1) * tweetsPerPage;
@@ -27,8 +25,6 @@ export const GridContainer: React.FC<GridContainerProps> = ({
   const currentTweets = tweets?.slice(startIndex, startIndex + tweetsPerPage);
 
   const skeletonArray = Array(tweetsPerPage).fill(0);
-  const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
- 
 
   return (
     <Box
@@ -42,8 +38,8 @@ export const GridContainer: React.FC<GridContainerProps> = ({
         columnGap: 3,
         width: "100%",
         padding: {
-          xs: `10px`
-        }
+          xs: `10px`,
+        },
       }}
     >
       {loading

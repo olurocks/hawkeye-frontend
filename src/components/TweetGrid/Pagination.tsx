@@ -1,6 +1,5 @@
 import React from "react";
 import { Box } from "@mui/system";
-import { useState, useEffect } from "react";
 import { Pagination } from "@mui/material";
 
 import { GridColors } from "./colors";

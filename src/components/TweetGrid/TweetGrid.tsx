@@ -1,11 +1,5 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
-import {
-  Box,
-  CircularProgress,
-  Card,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
+import React, { useState, useEffect } from "react";
+import { Box, Card, useMediaQuery, useTheme } from "@mui/material";
 import { TweetGridProps } from "../../types/types";
 import { GridColors } from "./colors";
 import { GridTitle } from "./Title";
@@ -31,7 +25,7 @@ export const TweetGrid: React.FC<TweetGridProps> = ({
   const [isTransitioning, setIsTransitioning] = useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const isTablet = useMediaQuery(theme.breakpoints.down("md"));
+  // const isTablet = useMediaQuery(theme.breakpoints.down("md"));
   const tweetsPerPage = isMobile ? 10 : 13;
   const totalPages = Math.max(
     1,
@@ -48,8 +42,6 @@ export const TweetGrid: React.FC<TweetGridProps> = ({
     setDirection(newPage > page ? "forward" : "backward");
     setPage(newPage);
   };
-
-
 
   useEffect(() => {
     if (isTransitioning) {

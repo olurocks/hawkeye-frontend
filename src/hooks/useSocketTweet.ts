@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { io } from "socket.io-client";
 import { ITweet } from "../types/types";
 

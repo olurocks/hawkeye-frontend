@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from "./components/Main/App";
 import reportWebVitals from "./reportWebVitals";
-import { ThemeContext } from "@emotion/react";
 import { ThemeContextProvider } from "./utils/ThemeContext";
 
 const root = ReactDOM.createRoot(

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { Box, CircularProgress, Card, useMediaQuery, useTheme } from "@mui/material";
+import { Box, CircularProgress } from "@mui/material";
 
 import { GridTitle } from "../components/TweetGrid/Title";
 import { motion, AnimatePresence } from "framer-motion";

@@ -1,31 +1,12 @@
 import React, { useState } from "react";
-import {
-  AppBar,
-  Toolbar,
-  Button,
-  Typography,
-  IconButton,
-  Box,
-  Drawer,
-  List,
-  ListItem,
-  ListItemText,
-  Divider,
-  ListItemButton,
-  ListItemIcon,
-} from "@mui/material";
-import TelegramIcon from "@mui/icons-material/Telegram";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import MenuBookIcon from "@mui/icons-material/MenuBook";
-import MenuIcon from "@mui/icons-material/Menu";
-import CloseIcon from "@mui/icons-material/Close";
+import { AppBar, Toolbar, Box } from "@mui/material";
 import ThemeToggleButton from "../ThemeToggle";
 import { useAppTheme } from "../../utils/ThemeContext";
 import { useScrollTrigger } from "@mui/material";
 import { lightColors, darkColors } from "../../utils/navbarColors";
 import { SocialIcons } from "./SocialIcons";
 import { Logo } from "./Logo";
-import { Dexscreener, Dextools, ExternalLinks, PumpFun } from "./ExternalLinks";
+import { ExternalLinks } from "./ExternalLinks";
 import { AnnouncementBubble } from "./AnnouncementBubble";
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material";

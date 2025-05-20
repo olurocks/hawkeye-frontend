@@ -3,14 +3,13 @@ import { TweetCardProps } from "../../types/types";
 import { Box, Grid, CardMedia } from "@mui/material";
 import { TweetCardColors } from "../../utils/TweetCardColors";
 import { MediaModal } from "../../hooks/MediaModal";
-import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 
 export const Media: React.FC<TweetCardProps> = ({ tweet }) => {
   const colors = TweetCardColors();
   const [selectedMedia, setSelectedMedia] = React.useState<any>(null);
-  const [playingMediaIndex, setPlayingMediaIndex] = React.useState<
-    number | null
-  >(null);
+  // const [playingMediaIndex, setPlayingMediaIndex] = React.useState<
+  //   number | null
+  // >(null);
 
   const handleMediaClick = (media: any) => {
     setSelectedMedia(media);
@@ -20,13 +19,13 @@ export const Media: React.FC<TweetCardProps> = ({ tweet }) => {
     setSelectedMedia(null);
   };
 
-  const handleMediaHover = (index: number) => {
-    setPlayingMediaIndex(index);
-  };
+  // const handleMediaHover = (index: number) => {
+  //   setPlayingMediaIndex(index);
+  // };
 
-  const handleMediaLeave = () => {
-    setPlayingMediaIndex(null);
-  };
+  // const handleMediaLeave = () => {
+  //   setPlayingMediaIndex(null);
+  // };
 
   if (!tweet.media || tweet.media.length === 0) {
     return null;
@@ -87,8 +86,8 @@ export const Media: React.FC<TweetCardProps> = ({ tweet }) => {
                 },
               }}
               onClick={() => handleMediaClick(item)}
-              onMouseEnter={() => handleMediaHover(index)}
-              onMouseLeave={handleMediaLeave}
+              // onMouseEnter={() => handleMediaHover(index)}
+              // onMouseLeave={handleMediaLeave}
             >
               {item.type === "photo" ? (
                 <>
