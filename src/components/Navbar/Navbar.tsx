@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { AppBar, Toolbar, Box } from "@mui/material";
 import ThemeToggleButton from "../ThemeToggle";
 import { useAppTheme } from "../../utils/ThemeContext";
@@ -44,7 +44,7 @@ const Navbar = (props: Props) => {
   const colors = mode === "light" ? lightColors : darkColors;
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const isTablet = useMediaQuery(theme.breakpoints.down("md"));
+  // const isTablet = useMediaQuery(theme.breakpoints.down("md"));
 
   if (isMobile) {
     return (
@@ -53,7 +53,7 @@ const Navbar = (props: Props) => {
           position="fixed"
           sx={{
             backgroundColor: colors.primary,
-            minHeight:110,
+            minHeight: 110,
             paddingTop: 1,
             borderBottom: `3px solid ${colors.outline}`,
             boxShadow: `0 4px 0 -2px ${colors.secondary}`,
@@ -71,7 +71,7 @@ const Navbar = (props: Props) => {
             }}
           >
             <Logo />
-            <Box sx={{marginBottom: 5}}>
+            <Box sx={{ marginBottom: 5 }}>
               <MobileMenu />
             </Box>
           </Toolbar>
@@ -79,91 +79,91 @@ const Navbar = (props: Props) => {
       </ElevationScroll>
     );
   }
-return (
-  <>
-    <ElevationScroll {...props}>
-      <AppBar
-        position="fixed"
-        elevation={0}
-        sx={{
-          backgroundColor: colors.primary,
-          borderBottom: `4px solid ${colors.outline}`,
-          boxShadow: `0 6px 0 -3px ${colors.secondary}`,
-          zIndex: (theme) => theme.zIndex.drawer + 1,
-          padding:1,
-          "&::before": {
-            content: '""',
-            position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundImage: `radial-gradient(${colors.dark}22 2px, transparent 2px)`,
-            backgroundSize: "10px 10px",
-            backgroundPosition: "0 0",
-            opacity: 0.1,
-            pointerEvents: "none",
-          },
-        }}
-      >
-        <Toolbar
+  return (
+    <>
+      <ElevationScroll {...props}>
+        <AppBar
+          position="fixed"
+          elevation={0}
           sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            minHeight: { xs: 64, sm: 96, md: 96 },
-            padding: "0 16px",
-            position: "relative",
+            backgroundColor: colors.primary,
+            borderBottom: `4px solid ${colors.outline}`,
+            boxShadow: `0 6px 0 -3px ${colors.secondary}`,
+            zIndex: (theme) => theme.zIndex.drawer + 1,
+            padding: 1,
+            "&::before": {
+              content: '""',
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundImage: `radial-gradient(${colors.dark}22 2px, transparent 2px)`,
+              backgroundSize: "10px 10px",
+              backgroundPosition: "0 0",
+              opacity: 0.1,
+              pointerEvents: "none",
+            },
           }}
         >
-          {/* Left side group */}
-          <Box sx={{ display: "flex", alignItems: "center", width: "33%" }}>
-            <SocialIcons />
-          </Box>
-
-          {/* Center logo - absolutely positioned */}
-          <Box
+          <Toolbar
             sx={{
-              position: "absolute",
-              left: "50%",
-              top: "50%",
-              transform: "translate(-50%, -50%)",
-              zIndex: 1,
-              width: "34%",
               display: "flex",
-              justifyContent: "center",
+              justifyContent: "space-between",
+              minHeight: { xs: 64, sm: 96, md: 96 },
+              padding: "0 16px",
+              position: "relative",
             }}
           >
-            <Logo />
-          </Box>
+            {/* Left side group */}
+            <Box sx={{ display: "flex", alignItems: "center", width: "33%" }}>
+              <SocialIcons />
+            </Box>
 
-          {/* Right side group */}
-          <Box 
-            sx={{ 
-              display: "flex", 
-              alignItems: "center", 
-              gap: 2,
-              width: "33%",
-              justifyContent: "flex-end"
-            }}
-          >
-            <ExternalLinks />
-            <ThemeToggleButton />
-          </Box>
-        </Toolbar>
-      </AppBar>
-    </ElevationScroll>
+            {/* Center logo - absolutely positioned */}
+            <Box
+              sx={{
+                position: "absolute",
+                left: "50%",
+                top: "50%",
+                transform: "translate(-50%, -50%)",
+                zIndex: 1,
+                width: "34%",
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <Logo />
+            </Box>
 
-    <Box
-      sx={{
-        mt: "176px",
-        display: "flex",
-        justifyContent: "center",
-      }}
-    >
-      <AnnouncementBubble />
-    </Box>
-  </>
-);
+            {/* Right side group */}
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: 2,
+                width: "33%",
+                justifyContent: "flex-end",
+              }}
+            >
+              <ExternalLinks />
+              <ThemeToggleButton />
+            </Box>
+          </Toolbar>
+        </AppBar>
+      </ElevationScroll>
+
+      <Box
+        sx={{
+          mt: "176px",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <AnnouncementBubble />
+      </Box>
+    </>
+  );
 };
 
 export default Navbar;

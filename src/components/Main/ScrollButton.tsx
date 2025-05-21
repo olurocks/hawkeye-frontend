@@ -2,9 +2,7 @@ import { useCallback, useContext } from "react";
 import { useScrollTrigger } from "@mui/material";
 import { Zoom, Box, Fab } from "@mui/material";
 import KeyboardArrowUp from "@mui/icons-material/KeyboardArrowUp";
-import RefreshIcon from "@mui/icons-material/Refresh";
 import { TweetsContext } from "../../hooks/TweetsContext";
-
 
 function ScrollToTopFab() {
   // Use `window` instead of `body` as `document` will be `undefined` when the
@@ -16,15 +14,13 @@ function ScrollToTopFab() {
 
   // Get refreshTweets function from context or props
   const tweetsContext = useContext(TweetsContext);
-  const refreshTweets = tweetsContext?.refreshTweets ?? (() => {});
-
   const handleClick = useCallback(() => {
     // Scroll to top
     window.scrollTo({ top: 0, behavior: "smooth" });
-    
+
     // Refresh tweets
-    refreshTweets();
-  }, [refreshTweets]);
+    (tweetsContext?.refreshTweets ?? (() => {}))();
+  }, [tweetsContext]);
 
   return (
     <Zoom in={trigger}>

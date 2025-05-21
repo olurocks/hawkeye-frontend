@@ -2,7 +2,6 @@ import { Box } from "@mui/system";
 import { ITweet } from "../../types/types";
 import { TweetGridSkeleton } from "./Skeleton";
 import { TweetCard } from "../TweetCard/TweetCard";
-import { useMediaQuery } from "@mui/material";
 
 interface GridContainerProps {
   tweets: ITweet[];

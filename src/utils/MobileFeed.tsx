@@ -17,53 +17,56 @@ export const MobileFeed: React.FC<MobileFeedProps> = ({ tweets: initialTweets, l
   const observerRef = useRef<IntersectionObserver | null>(null);
   const loadingRef = useRef(null);
 
-  // Handle new tweets from websocket
-  useEffect(() => {
-    if (initialTweets) {
-      setTweets(initialTweets);
-      // Reset to top when new tweets arrive
-      setDisplayCount(20);
-      window.scrollTo(0, 0);
-    }
-  }, [initialTweets]);
 
-  useEffect(() => {
-    setLoading(initialLoading);
-  }, [initialLoading]);
-
-  // Intersection Observer for infinite scrolling
-  useEffect(() => {
-    observerRef.current = new IntersectionObserver(
-      (entries) => {
-        const [entry] = entries;
-        if (entry.isIntersecting && !loading && hasMore) {
-          // Load more tweets when scrolling to the bottom
-          loadMoreTweets();
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (loadingRef.current) {
-      observerRef.current.observe(loadingRef.current);
-    }
-
-    return () => {
-      if (observerRef.current) {
-        observerRef.current.disconnect();
+    const loadMoreTweets = useCallback(() => {
+      // Make sure we don't exceed the number of available tweets
+      if (displayCount + 10 >= tweets.length) {
+        setDisplayCount(tweets.length);
+        setHasMore(false);
+      } else {
+        setDisplayCount((prev) => prev + 10);
       }
-    };
-  }, [loading, hasMore, displayCount]);
+    }, [displayCount, tweets.length]);
 
-  const loadMoreTweets = useCallback(() => {
-    // Make sure we don't exceed the number of available tweets
-    if (displayCount + 10 >= tweets.length) {
-      setDisplayCount(tweets.length);
-      setHasMore(false);
-    } else {
-      setDisplayCount(prev => prev + 10);
-    }
-  }, [displayCount, tweets.length]);
+    // Handle new tweets from websocket
+    useEffect(() => {
+      if (initialTweets) {
+        setTweets(initialTweets);
+        // Reset to top when new tweets arrive
+        setDisplayCount(20);
+        window.scrollTo(0, 0);
+      }
+    }, [initialTweets]);
+
+    useEffect(() => {
+      setLoading(initialLoading);
+    }, [initialLoading]);
+
+    // Intersection Observer for infinite scrolling
+    useEffect(() => {
+      observerRef.current = new IntersectionObserver(
+        (entries) => {
+          const [entry] = entries;
+          if (entry.isIntersecting && !loading && hasMore) {
+            // Load more tweets when scrolling to the bottom
+            loadMoreTweets();
+          }
+        },
+        { threshold: 0.1 }
+      );
+
+      if (loadingRef.current) {
+        observerRef.current.observe(loadingRef.current);
+      }
+
+      return () => {
+        if (observerRef.current) {
+          observerRef.current.disconnect();
+        }
+      };
+    }, [loading, hasMore, displayCount, loadMoreTweets]);
+
+
 
   // Item animation variants
   const itemVariants = {
