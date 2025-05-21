@@ -9,7 +9,6 @@ import {
 import Navbar from "../Navbar/Navbar";
 import { TweetGrid } from "../TweetGrid/TweetGrid";
 import { useSocketTweets } from "../../hooks/useSocketTweet";
-import { useAppTheme } from "../../utils/ThemeContext";
 import { AppColors } from "./Colors";
 import ScrollToTopFab from "./ScrollButton";
 import { generateGridIcons } from "../../utils/helpers";
