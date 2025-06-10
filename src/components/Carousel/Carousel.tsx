@@ -46,7 +46,7 @@ export const TickerCarousel: React.FC<TickerCarouselProps> = ({ colors }) => {
         setLoading(true);
         // Replace with your actual API endpoint
         const response = await fetch(
-          "http://localhost:4000/api/cashtags/trending"
+          "https://hawkeye-1ueo.onrender.com/api/cashtags/trending"
         );
 
         if (!response.ok) {
