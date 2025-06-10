@@ -7,7 +7,7 @@ export const lightColors = {
   dark: "#111111", // Almost black
   light: "#FFFDF7", // Off-white
   outline: "#000000", // Black
-  yellow: "#FFDC00",
+  // yellow: "#FFDC00",
 };
 
 export const darkColors = {
@@ -17,5 +17,5 @@ export const darkColors = {
   dark: "#111111", // Almost black
   light: "#FFFDF7", // Off-white
   outline: "#1B2A41", // Dark blue-gray
-  yellow: "#1E3E62",
+  // yellow: "#1E3E62",
 };

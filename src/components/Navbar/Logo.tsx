@@ -2,17 +2,12 @@ import React from "react";
 import { Box } from "@mui/material";
 import { motion } from "framer-motion";
 import { Typography } from "@mui/material";
-import { useMediaQuery } from "@mui/material";
-
 import { useAppTheme } from "../../utils/ThemeContext";
 import { lightColors, darkColors } from "../../utils/navbarColors";
-import { useTheme } from "@mui/material";
 
 export const Logo: React.FC = () => {
   const { mode } = useAppTheme();
   const colors = mode === "light" ? lightColors : darkColors;
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
     <Box
