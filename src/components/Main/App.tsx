@@ -14,6 +14,7 @@ import ScrollToTopFab from "./ScrollButton";
 import { generateGridIcons } from "../../utils/helpers";
 import { TweetsProvider } from "../../hooks/TweetsContext";
 import { NewTweetsNotification } from "./NewTweets";
+import TickerCarousel from "../Carousel/Carousel";
 // Generate evenly spaced icons in a grid system
 
 const App = () => {
@@ -24,6 +25,25 @@ const App = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   // const isTablet = useMediaQuery(theme.breakpoints.down("md"));
+  // const carouselColors = {
+  //   primary: "colors.primary",
+  //   secondary: colors.cashtagbg,
+  //   accent: colors.accent,
+  //   text_primary: colors.secondary,
+  //   text_secondary: colors.accent,
+  //   card_background: colors.background,
+  //   dark: colors.dark,
+  // };
+
+  const carouselColors = {
+    primary: "colors.primary",
+    secondary: colors.secondary,
+    accent: colors.accent,
+    text_primary: colors.text_primary,
+    text_secondary: colors.text_secondary,
+    card_background: colors.card_background,
+    dark: colors.dark,
+  };
 
   if (isMobile) {
     return (
@@ -32,7 +52,7 @@ const App = () => {
           outline: "2px solid red", // ADD THIS
           display: "flex",
           flexDirection: "column",
-          minHeight: "100%",
+          minHeight: "100vh",
           position: "relative",
           backgroundColor: colors.background,
         }}
@@ -40,6 +60,10 @@ const App = () => {
         <Box sx={{ padding: 10 }}>
           <Navbar />
         </Box>
+
+        <Container sx={{ paddingBottom: 6 }}>
+          <TickerCarousel colors={carouselColors} />
+        </Container>
 
         <Container sx={{ width: "100%" }}>
           <TweetGrid
@@ -131,6 +155,9 @@ const App = () => {
       {/* Navbar */}
       <Navbar />
 
+      <Container sx={{ paddingBottom: 6 }}>
+        <TickerCarousel colors={carouselColors} />
+      </Container>
       {/* Main Content */}
       <Container
         maxWidth="xl"

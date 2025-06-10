@@ -12,6 +12,7 @@ import {
   Snackbar,
   Alert,
 } from "@mui/material";
+import { motion } from "framer-motion";
 import MenuIcon from "@mui/icons-material/Menu";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import TwitterIcon from "@mui/icons-material/Twitter";
@@ -25,6 +26,7 @@ import InfoIcon from "@mui/icons-material/Info";
 import { useAppTheme } from "../../utils/ThemeContext";
 import { lightColors, darkColors } from "../../utils/navbarColors";
 import ThemeToggleButton from "../ThemeToggle";
+
 
 // Helper function to get social icons
 const getSocialIcon = (text: string) => {
@@ -81,7 +83,10 @@ const getFeatureIcon = (text: string) => {
     case "Custom Feed":
       return <DashboardIcon />;
     case "Trending Tickers":
-      return <LocalFireDepartment sx={{ color: "#1E88E5", fontSize: 24 }} />;
+      return (
+        <LocalFireDepartment sx={{ color: "#1E88E5", fontSize: 24 }} />
+      );
+
     case "Wallet":
       return <AccountBalanceWalletIcon />;
     case "Ai Analytics":
@@ -117,7 +122,7 @@ const getLinkUrl = (text: string) => {
   }
 };
 
-const MobileMenu = () => {
+const PCMenuDrawer = () => {
   const [open, setOpen] = React.useState(false);
   const [showNotification, setShowNotification] = React.useState(false);
   const { mode } = useAppTheme();
@@ -149,10 +154,10 @@ const MobileMenu = () => {
   const DrawerList = (
     <Box
       sx={{
-        width: 250,
+        width: 280,
         height: "100%",
         color: colors.secondary,
-        backgroundColor: colors.primary,
+        backgroundColor: colors.primary + "90", // add transparency (cc = ~80% opacity)
         display: "flex",
         flexDirection: "column",
       }}
@@ -161,14 +166,15 @@ const MobileMenu = () => {
       {/* Header */}
       <Box
         sx={{
-          padding: 2,
+          padding: 3,
           borderBottom: `1px solid ${colors.outline}`,
-          backgroundColor: colors.primary,
+          backgroundColor: colors.primary + "90", // transparent header
+          backdropFilter: "blur(8px)",
         }}
       >
         <Box
           sx={{
-            fontSize: "1.1rem",
+            fontSize: "1.2rem",
             fontWeight: "bold",
             color: colors.secondary,
           }}
@@ -177,11 +183,15 @@ const MobileMenu = () => {
         </Box>
       </Box>
 
+
+
+      <Divider sx={{ backgroundColor: colors.outline }} />
+
       {/* Social Links Section */}
       <Box sx={{ padding: 1 }}>
         <Box
           sx={{
-            fontSize: "0.85rem",
+            fontSize: "0.9rem",
             fontWeight: "bold",
             color: colors.secondary,
             opacity: 0.7,
@@ -211,7 +221,7 @@ const MobileMenu = () => {
                   primary={text}
                   sx={{
                     "& .MuiListItemText-primary": {
-                      fontSize: "0.9rem",
+                      fontSize: "0.95rem",
                     },
                   }}
                 />
@@ -227,7 +237,7 @@ const MobileMenu = () => {
       <Box sx={{ padding: 1 }}>
         <Box
           sx={{
-            fontSize: "0.85rem",
+            fontSize: "0.9rem",
             fontWeight: "bold",
             color: colors.secondary,
             opacity: 0.7,
@@ -257,7 +267,7 @@ const MobileMenu = () => {
                   primary={text}
                   sx={{
                     "& .MuiListItemText-primary": {
-                      fontSize: "0.9rem",
+                      fontSize: "0.95rem",
                     },
                   }}
                 />
@@ -269,11 +279,11 @@ const MobileMenu = () => {
 
       <Divider sx={{ backgroundColor: colors.outline }} />
 
-      {/* Features Section */}
+            {/* New Features Section */}
       <Box sx={{ padding: 1 }}>
         <Box
           sx={{
-            fontSize: "0.85rem",
+            fontSize: "0.9rem",
             fontWeight: "bold",
             color: colors.secondary,
             opacity: 0.7,
@@ -303,7 +313,7 @@ const MobileMenu = () => {
                   primary={text}
                   sx={{
                     "& .MuiListItemText-primary": {
-                      fontSize: "0.9rem",
+                      fontSize: "0.95rem",
                     },
                   }}
                 />
@@ -313,13 +323,11 @@ const MobileMenu = () => {
         </List>
       </Box>
 
-      <Divider sx={{ backgroundColor: colors.outline }} />
-
       {/* Additional Options Section */}
       <Box sx={{ padding: 1, flexGrow: 1 }}>
         <Box
           sx={{
-            fontSize: "0.85rem",
+            fontSize: "0.9rem",
             fontWeight: "bold",
             color: colors.secondary,
             opacity: 0.7,
@@ -353,7 +361,7 @@ const MobileMenu = () => {
                   primary={text}
                   sx={{
                     "& .MuiListItemText-primary": {
-                      fontSize: "0.9rem",
+                      fontSize: "0.95rem",
                     },
                   }}
                 />
@@ -370,7 +378,8 @@ const MobileMenu = () => {
           borderTop: `1px solid ${colors.outline}`,
           display: "flex",
           justifyContent: "center",
-          backgroundColor: colors.primary,
+          backgroundColor: colors.primary + "90",
+          backdropFilter: "blur(8px)",
         }}
       >
         <ThemeToggleButton />
@@ -380,34 +389,49 @@ const MobileMenu = () => {
 
   return (
     <>
-      <IconButton
-        edge="start"
-        color="primary"
-        aria-label="menu"
-        onClick={toggleDrawer(true)}
-        sx={{
-          position: "absolute",
-          right: 16,
-          backgroundColor: colors.light,
-          border: `3px solid ${colors.outline}`,
-          borderRadius: "12px",
-          padding: "8px",
-          boxShadow: `4px 4px 0px ${colors.outline}`,
-          transition: "all 0.2s",
-          "& svg": {
-            color: colors.secondary,
-            filter: `drop-shadow(1px 1px 0 ${colors.outline})`,
+      {/* Comic-styled Menu Button */}
+      <motion.div
+        whileHover={{
+          scale: 1.2,
+          rotate: [-2, 2, -2],
+          transition: { duration: 0.3 },
+        }}
+        whileTap={{ scale: 0.9 }}
+        style={{ margin: "0 8px" }}
+      >
+        <IconButton
+          edge="start"
+          color="primary"
+          aria-label="menu"
+          onClick={toggleDrawer(true)}
+          sx={{
+            backgroundColor: colors.light,
+            border: `3px solid ${colors.outline}`,
+            borderRadius: "12px",
+            padding: "8px",
+            boxShadow: `4px 4px 0px ${colors.outline}`,
             transition: "all 0.2s",
-          },
-          "&:hover": {
-            transform: "scale(1.05)",
+            "& svg": {
+              color: colors.secondary,
+              filter: `drop-shadow(1px 1px 0 ${colors.outline})`,
+              transition: "all 0.2s",
+            },
+          }}
+        >
+          <MenuIcon />
+        </IconButton>
+      </motion.div>
+
+      <Drawer
+        open={open}
+        onClose={toggleDrawer(false)}
+        anchor="left"
+        sx={{
+          "& .MuiDrawer-paper": {
+            boxShadow: `4px 0 8px rgba(0,0,0,0.1)`,
           },
         }}
       >
-        <MenuIcon />
-      </IconButton>
-
-      <Drawer open={open} onClose={toggleDrawer(false)}>
         {DrawerList}
       </Drawer>
 
@@ -438,4 +462,4 @@ const MobileMenu = () => {
   );
 };
 
-export default MobileMenu;
+export default PCMenuDrawer;

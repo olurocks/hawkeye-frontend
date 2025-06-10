@@ -88,14 +88,14 @@ export const MobileFeed: React.FC<MobileFeedProps> = ({ tweets: initialTweets, l
     <Box
       sx={{
         width: "100%",
+        minHeight: "100vh",
         padding: 1,
         position: "relative",
-        
       }}
     >
       <GridTitle />
       <div id="grid-top-anchor" />
-      
+
       <AnimatePresence>
         {visibleTweets.map((tweet, index) => (
           <motion.div
@@ -104,14 +104,14 @@ export const MobileFeed: React.FC<MobileFeedProps> = ({ tweets: initialTweets, l
             initial="hidden"
             animate="visible"
             variants={itemVariants}
-            style={{ marginBottom: '16px' }}
+            style={{ marginBottom: "16px" }}
           >
             {/* Replace with your actual Tweet component */}
             <TweetCard tweet={tweet} />
           </motion.div>
         ))}
       </AnimatePresence>
-      
+
       {/* Loading indicator at the bottom */}
       <Box
         ref={loadingRef}
@@ -125,9 +125,9 @@ export const MobileFeed: React.FC<MobileFeedProps> = ({ tweets: initialTweets, l
         {loading ? (
           <CircularProgress size={30} />
         ) : hasMore ? (
-          <div style={{ height: '20px' }} />
+          <div style={{ height: "20px" }} />
         ) : (
-          <Box sx={{ textAlign: 'center', color: 'text.secondary', py: 2 }}>
+          <Box sx={{ textAlign: "center", color: "text.secondary", py: 2 }}>
             No more tweets to load
           </Box>
         )}

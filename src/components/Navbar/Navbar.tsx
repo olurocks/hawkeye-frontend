@@ -11,6 +11,8 @@ import { AnnouncementBubble } from "./AnnouncementBubble";
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material";
 import MobileMenu from "./MobileMenu";
+import PCMenuDrawer from "./PCMenu";
+import { ComicIconButton } from "./ComicButton";
 
 interface Props {
   /**
@@ -66,12 +68,12 @@ const Navbar = (props: Props) => {
               justifyContent: "space-between",
               alignItems: "center",
               minHeight: 88,
-              padding: "0 20px",
+              padding: "0 11px",
               position: "relative",
             }}
           >
             <Logo />
-            <Box sx={{ marginBottom: 5 }}>
+            <Box sx={{ marginBottom: 5, paddingRight: 5 }}>
               <MobileMenu />
             </Box>
           </Toolbar>
@@ -117,6 +119,7 @@ const Navbar = (props: Props) => {
           >
             {/* Left side group */}
             <Box sx={{ display: "flex", alignItems: "center", width: "33%" }}>
+              <PCMenuDrawer />
               <SocialIcons />
             </Box>
 

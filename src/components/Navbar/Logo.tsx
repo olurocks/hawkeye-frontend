@@ -2,13 +2,18 @@ import React from "react";
 import { Box } from "@mui/material";
 import { motion } from "framer-motion";
 import { Typography } from "@mui/material";
+import { useMediaQuery } from "@mui/material";
 
 import { useAppTheme } from "../../utils/ThemeContext";
 import { lightColors, darkColors } from "../../utils/navbarColors";
+import { useTheme } from "@mui/material";
 
 export const Logo: React.FC = () => {
   const { mode } = useAppTheme();
   const colors = mode === "light" ? lightColors : darkColors;
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
   return (
     <Box
       sx={{
@@ -48,17 +53,20 @@ export const Logo: React.FC = () => {
         variant="h6"
         component="div"
         sx={{
-          fontFamily: "'Bangers', cursive",
+          fontFamily: {
+            xs: "'Audiowide-Regular', cursive",
+            sm: "'Bangers', cursive",
+          },
           fontWeight: "bold",
           letterSpacing: 6,
           fontSize: { xs: "2rem", sm: "3.5rem" },
           color: colors.outline,
           textShadow: `
-                  2px 2px 0 ${colors.secondary}, 
-                  -2px -2px 0 ${colors.secondary},
-                  2px -2px 0 ${colors.secondary},
-                  -2px 2px 0 ${colors.secondary}
-                `,
+          2px 2px 0 ${colors.secondary}, 
+          -2px -2px 0 ${colors.secondary},
+          2px -2px 0 ${colors.secondary},
+          -2px 2px 0 ${colors.secondary}
+            `,
           filter: "drop-shadow(3px 3px 0 rgba(0,0,0,0.3))",
           WebkitTextStroke: `2px ${colors.outline}`,
           padding: "0 8px",

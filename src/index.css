@@ -21,6 +21,10 @@
 }
 
 @font-face {
+  font-family: "Audiowide-Regular";
+  src: url("/public/Audiowide-Regular.ttf") format("truetype");
+}
+@font-face {
   font-family: "winky-Sans";
   src: url("/public/WinkySans-VariableFont_wght.ttf") format("truetype");
 }
