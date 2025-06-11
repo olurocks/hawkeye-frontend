@@ -59,7 +59,7 @@ export const TickerCarousel: React.FC<TickerCarouselProps> = ({ colors }) => {
         setError(null);
       } catch (err) {
         console.error("Error fetching cashtags:", err);
-        setError("Failed to load trending tickers");
+        // setError("Failed to load trending tickers");
       } finally {
         setLoading(false);
       }
@@ -222,7 +222,7 @@ export const TickerCarousel: React.FC<TickerCarouselProps> = ({ colors }) => {
           <Typography
             variant={isMobile ? "subtitle1" : "h6"}
             sx={{
-              fontFamily: "'Bangers', cursive",
+              fontFamily: "Audiowide-Regular",
               color: colors.text_primary,
               letterSpacing: "1px",
               whiteSpace: "nowrap",
