@@ -31,8 +31,8 @@ export const Logo: React.FC = () => {
           alt="Hawkeye Logo"
           sx={{
             height: 90,
-            width: 100,
-            display: { xs: "block", sm: "block" },
+            width: 80,
+            display: { xs: "block", sm: "flex" },
             border: `3px solid ${colors.outline}`,
             borderRadius: "4px",
             padding: "4px",
@@ -54,7 +54,7 @@ export const Logo: React.FC = () => {
           },
           fontWeight: "bold",
           letterSpacing: 6,
-          fontSize: { xs: "2rem", sm: "3.5rem" },
+          fontSize: { xs: "1.8rem", sm: "3.5rem" },
           color: colors.outline,
           textShadow: `
           2px 2px 0 ${colors.secondary}, 
