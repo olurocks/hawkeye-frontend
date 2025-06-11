@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Typography,
@@ -7,8 +7,8 @@ import {
   useTheme,
   useMediaQuery,
   Skeleton,
-  Tooltip
-} from '@mui/material';
+  Tooltip,
+} from "@mui/material";
 import {
   TrendingUp,
   TrendingDown,
@@ -133,11 +133,12 @@ export const TickerCarousel: React.FC<TickerCarouselProps> = ({ colors }) => {
             variant="h6"
             sx={{
               fontFamily: "'Bangers', cursive",
+              fontWeight: "10px",
               color: colors.text_primary,
               letterSpacing: "1px",
             }}
           >
-            TRENDING TICKERS
+            {isMobile ? "TRENDING" : "TRENDING TICKERS"}
           </Typography>
           <Box sx={{ display: "flex", gap: 1, flex: 1 }}>
             {Array.from({ length: 6 }).map((_, index) => (
@@ -222,7 +223,8 @@ export const TickerCarousel: React.FC<TickerCarouselProps> = ({ colors }) => {
           <Typography
             variant={isMobile ? "subtitle1" : "h6"}
             sx={{
-              fontFamily: "Audiowide-Regular",
+              fontFamily: "cursive",
+              fontWeight: "Bold",
               color: colors.text_primary,
               letterSpacing: "1px",
               whiteSpace: "nowrap",
