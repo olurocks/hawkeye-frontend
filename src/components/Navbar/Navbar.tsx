@@ -12,7 +12,6 @@ import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material";
 import MobileMenu from "./MobileMenu";
 import PCMenuDrawer from "./PCMenu";
-import { ComicIconButton } from "./ComicButton";
 
 interface Props {
   /**
