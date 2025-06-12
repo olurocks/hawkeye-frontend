@@ -1,5 +1,5 @@
 export const comicFonts = {
   title: "'Disney', 'Bangers', 'Impact', cursive",
-  body: "'Comic Neue', 'Comic Sans MS', sans-serif",
+  body: "'Mulish'",
   caption: "'Rubik', sans-serif",
 };

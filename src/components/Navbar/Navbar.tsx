@@ -12,6 +12,7 @@ import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material";
 import MobileMenu from "./MobileMenu";
 import PCMenuDrawer from "./PCMenu";
+import { ComicIconButton } from "./ComicButton";
 
 interface Props {
   /**
@@ -54,9 +55,8 @@ const Navbar = (props: Props) => {
           position="fixed"
           sx={{
             backgroundColor: colors.primary,
-            minHeight: 110,
-            paddingTop: 1,
-            borderBottom: `3px solid ${colors.outline}`,
+            minHeight: { sm: 110, xs: 50 },
+            borderBottom: `1px solid ${colors.outline}`,
             boxShadow: `0 4px 0 -2px ${colors.secondary}`,
             zIndex: 1100,
           }}
@@ -66,13 +66,13 @@ const Navbar = (props: Props) => {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              minHeight: 88,
-              padding: "0 11px",
+              minHeight: 80,
+              padding: "0 20px",
               position: "relative",
             }}
           >
             <Logo />
-            <Box sx={{ marginBottom: 5, paddingRight: 5 }}>
+            <Box sx={{ marginBottom: 5, marginLeft: 5 }}>
               <MobileMenu />
             </Box>
           </Toolbar>

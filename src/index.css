@@ -19,6 +19,10 @@
   font-family: "sankofa-Display";
   src: url("/public/SankofaDisplay-Regular.ttf") format("truetype");
 }
+@font-face {
+  font-family: "Mulish";
+  src: url("/public/Mulish-VariableFont_wght.ttf") format("truetype");
+}
 
 @font-face {
   font-family: "Audiowide-Regular";

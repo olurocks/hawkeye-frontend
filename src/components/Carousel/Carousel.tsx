@@ -112,7 +112,7 @@ export const TickerCarousel: React.FC<TickerCarouselProps> = ({ colors }) => {
       <Box
         sx={{
           backgroundColor: colors.primary,
-          padding: "16px 0",
+          padding: { xs: "8px 0", sm: "16px 0" },
           borderBottom: `3px solid ${colors.secondary}`,
           position: "relative",
           overflow: "hidden",
@@ -223,8 +223,11 @@ export const TickerCarousel: React.FC<TickerCarouselProps> = ({ colors }) => {
           <Typography
             variant={isMobile ? "subtitle1" : "h6"}
             sx={{
-              fontFamily: "cursive",
-              fontWeight: "Bold",
+              fontFamily: isMobile
+                ? "'Roboto', 'Arial', sans-serif"
+                : "cursive",
+              fontStyle: isMobile ? "normal" : undefined,
+              fontWeight: "bold",
               color: colors.text_primary,
               letterSpacing: "1px",
               whiteSpace: "nowrap",
