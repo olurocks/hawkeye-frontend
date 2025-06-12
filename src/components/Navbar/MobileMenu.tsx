@@ -386,7 +386,6 @@ const MobileMenu = () => {
         aria-label="menu"
         onClick={toggleDrawer(true)}
         sx={{
-          position: "absolute",
           right: 16,
           backgroundColor: colors.light,
           border: `3px solid ${colors.outline}`,

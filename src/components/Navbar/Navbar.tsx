@@ -1,5 +1,5 @@
 import React from "react";
-import { AppBar, Toolbar, Box } from "@mui/material";
+import { AppBar, Toolbar, Box, Typography } from "@mui/material";
 import ThemeToggleButton from "../ThemeToggle";
 import { useAppTheme } from "../../utils/ThemeContext";
 import { useScrollTrigger } from "@mui/material";
@@ -14,19 +14,12 @@ import MobileMenu from "./MobileMenu";
 import PCMenuDrawer from "./PCMenu";
 
 interface Props {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
   window?: () => Window;
   children?: React.ReactElement<{ elevation?: number }>;
 }
 
 function ElevationScroll(props: Props) {
   const { children, window } = props;
-  // Note that you normally won't need to set the window ref as useScrollTrigger
-  // will default to window.
-  // This is only being set here because the demo is in an iframe.
   const trigger = useScrollTrigger({
     disableHysteresis: true,
     threshold: 0,
@@ -40,45 +33,83 @@ function ElevationScroll(props: Props) {
     : null;
 }
 
-const Navbar = (props: Props) => {
+const MobileNavbar = () => {
   const { mode } = useAppTheme();
   const colors = mode === "light" ? lightColors : darkColors;
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  // const isTablet = useMediaQuery(theme.breakpoints.down("md"));
 
-  if (isMobile) {
-    return (
-      <ElevationScroll {...props}>
-        <AppBar
-          position="fixed"
-          sx={{
-            backgroundColor: colors.primary,
-            minHeight: { sm: 110, xs: 50 },
-            borderBottom: `1px solid ${colors.outline}`,
-            boxShadow: `0 4px 0 -2px ${colors.secondary}`,
-            zIndex: 1100,
-          }}
+  return (
+    <AppBar
+      position="fixed"
+      sx={{
+        backgroundColor: colors.primary,
+        height: 60,
+        borderBottom: `1px solid ${colors.outline}`,
+        boxShadow: `0 4px 0 -2px ${colors.secondary}`,
+        zIndex: 1100,
+      }}
+    >
+      <Toolbar
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          height: 60,
+          padding: "0 16px",
+        }}
+      >
+        {/* Logo image on the left */}
+        <Box
+          sx={{ width: "33%", display: "flex", justifyContent: "flex-start" }}
         >
-          <Toolbar
+          <Box
+            component="img"
+            src="/logo.jpg"
+            alt="Hawkeye Logo"
             sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              minHeight: 80,
-              padding: "0 20px",
-              position: "relative",
+              height: 40,
+              width: 40,
+              border: `2px solid ${colors.outline}`,
+              borderRadius: "4px",
+              padding: "2px",
+              backgroundColor: colors.light,
+              boxShadow: `2px 2px 0px ${colors.outline}`,
+            }}
+          />
+        </Box>
+
+        {/* Title in the center */}
+        <Box sx={{ width: "34%", display: "flex", justifyContent: "center" }}>
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{
+              fontFamily: "'Luckiest Guy', cursive",
+              fontWeight: "bold",
+              letterSpacing: 1,
+              fontSize: "1.5rem",
+              color: colors.dark,
+              textTransform: "uppercase",
+              lineHeight: 1,
+              whiteSpace: "nowrap",
             }}
           >
-            <Logo />
-            <Box sx={{ marginBottom: 5, marginLeft: 5 }}>
-              <MobileMenu />
-            </Box>
-          </Toolbar>
-        </AppBar>
-      </ElevationScroll>
-    );
-  }
+            HAWKEYE
+          </Typography>
+        </Box>
+
+        {/* Menu button on the right */}
+        <Box sx={{ width: "33%", display: "flex", justifyContent: "flex-end" }}>
+          <MobileMenu />
+        </Box>
+      </Toolbar>
+    </AppBar>
+  );
+};
+
+const PCNavbar = (props: Props) => {
+  const { mode } = useAppTheme();
+  const colors = mode === "light" ? lightColors : darkColors;
+
   return (
     <>
       <ElevationScroll {...props}>
@@ -165,6 +196,13 @@ const Navbar = (props: Props) => {
       </Box>
     </>
   );
+};
+
+const Navbar = (props: Props) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
+  return isMobile ? <MobileNavbar /> : <PCNavbar {...props} />;
 };
 
 export default Navbar;

@@ -20,7 +20,7 @@ export const Logo: React.FC = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        gap: { sm: 2, xs: 4.5 },
+        gap: isMobile ? 1 : 2,
       }}
     >
       <motion.div
@@ -35,66 +35,80 @@ export const Logo: React.FC = () => {
           src="/logo.jpg"
           alt="Hawkeye Logo"
           sx={{
-            height: { xs: 50, sm: 90 },
-            width: { sm: 100, xs: 60 },
-            display: { xs: "block", sm: "block" },
+            height: isMobile ? 40 : 90,
+            width: isMobile ? 40 : 100,
+            display: "block",
             border: `3px solid ${colors.outline}`,
             borderRadius: "4px",
             padding: "4px",
             backgroundColor: colors.light,
             boxShadow: `4px 4px 0px ${colors.outline}`,
-            transform: "rotate(-2deg)",
+            transform: isMobile ? "rotate(0deg)" : "rotate(-2deg)",
           }}
         />
       </motion.div>
 
-      {/* Comic-style title */}
-      <Typography
-        variant="h6"
-        component="div"
-        sx={{
-          fontFamily: isMobile ? "'Luckiest Guy'" : "'Bangers', cursive",
-          fontWeight: "bold",
-          letterSpacing: isMobile ? 4 : 6,
-          fontSize: { xs: "2rem", sm: "3.5rem" },
-          color: { sm: colors.outline, xs: colors.dark },
-          textShadow: isMobile
-            ? ``
-            : `
-                2px 2px 0 ${colors.secondary}, 
-                -2px -2px 0 ${colors.secondary},
-                2px -2px 0 ${colors.secondary},
-                -2px 2px 0 ${colors.secondary}
-              `,
-          filter: "drop-shadow(3px 3px 0 rgba(0,0,0,0.3))",
-          WebkitTextStroke: isMobile ? `` : `2px ${colors.outline}`,
-          padding: "0 4px",
-          transform: isMobile ? "rotate(0deg)" : "rotate(1deg)",
-          lineHeight: 1,
-          textAlign: isMobile ? "center" : "left",
-          width: isMobile ? "100%" : "auto",
-          marginTop: isMobile ? "4px" : 0,
-        }}
-      >
-        {["H", "A", "W", "K", "E", "Y", "E"].map((letter, index) => (
-          <motion.span
-            key={index}
-            initial={{ y: 0 }}
-            whileHover={{
-              y: [-5, 0, -5],
-              scale: 1.2,
-              color: index % 2 === 0 ? colors.secondary : colors.accent,
-              transition: {
-                y: { duration: 0.3, repeat: Infinity, repeatType: "reverse" },
-                scale: { duration: 0.2 },
-              },
-            }}
-            style={{ display: "inline-block", margin: "0 -2px" }}
-          >
-            {letter}
-          </motion.span>
-        ))}
-      </Typography>
+      {/* Title - different style for mobile */}
+      {!isMobile ? (
+        <Typography
+          variant="h6"
+          component="div"
+          sx={{
+            fontFamily: "'Bangers', cursive",
+            fontWeight: "bold",
+            letterSpacing: 6,
+            fontSize: "3.5rem",
+            color: colors.outline,
+            textShadow: `
+              2px 2px 0 ${colors.secondary}, 
+              -2px -2px 0 ${colors.secondary},
+              2px -2px 0 ${colors.secondary},
+              -2px 2px 0 ${colors.secondary}
+            `,
+            filter: "drop-shadow(3px 3px 0 rgba(0,0,0,0.3))",
+            WebkitTextStroke: `2px ${colors.outline}`,
+            padding: "0 4px",
+            transform: "rotate(1deg)",
+            lineHeight: 1,
+          }}
+        >
+          {["H", "A", "W", "K", "E", "Y", "E"].map((letter, index) => (
+            <motion.span
+              key={index}
+              initial={{ y: 0 }}
+              whileHover={{
+                y: [-5, 0, -5],
+                scale: 1.2,
+                color: index % 2 === 0 ? colors.secondary : colors.accent,
+                transition: {
+                  y: { duration: 0.3, repeat: Infinity, repeatType: "reverse" },
+                  scale: { duration: 0.2 },
+                },
+              }}
+              style={{ display: "inline-block", margin: "0 -2px" }}
+            >
+              {letter}
+            </motion.span>
+          ))}
+        </Typography>
+      ) : (
+        <Typography
+          variant="h6"
+          component="div"
+          sx={{
+            fontFamily: "'Luckiest Guy', cursive",
+            fontWeight: "bold",
+            letterSpacing: 2,
+            fontSize: "1.5rem",
+            color: colors.dark,
+            textTransform: "uppercase",
+            lineHeight: 1,
+            whiteSpace: "nowrap",
+          }}
+        >
+          HAWKEYE
+        </Typography>
+      )}
     </Box>
   );
 };
