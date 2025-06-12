@@ -42,7 +42,7 @@ const MobileNavbar = () => {
       position="fixed"
       sx={{
         backgroundColor: colors.primary,
-        height: 60,
+        height: 70,
         borderBottom: `1px solid ${colors.outline}`,
         boxShadow: `0 4px 0 -2px ${colors.secondary}`,
         zIndex: 1100,
@@ -53,7 +53,7 @@ const MobileNavbar = () => {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          height: 60,
+          height: 70,
           padding: "0 16px",
         }}
       >
@@ -83,7 +83,7 @@ const MobileNavbar = () => {
             variant="h6"
             component="div"
             sx={{
-              fontFamily: "'Luckiest Guy', cursive",
+              fontFamily: "'Luckiest Guy', cursive, sans-serif",
               fontWeight: "bold",
               letterSpacing: 1,
               fontSize: "1.5rem",
@@ -91,6 +91,10 @@ const MobileNavbar = () => {
               textTransform: "uppercase",
               lineHeight: 1,
               whiteSpace: "nowrap",
+              fontStyle: "normal !important",
+              fontFeatureSettings: "'liga' off",
+              WebkitFontSmoothing: "antialiased",
+              MozOsxFontSmoothing: "grayscale",
             }}
           >
             HAWKEYE
