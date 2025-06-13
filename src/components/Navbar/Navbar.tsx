@@ -83,7 +83,7 @@ const MobileNavbar = () => {
             variant="h6"
             component="div"
             sx={{
-              fontFamily: "'Luckiest Guy', cursive, sans-serif",
+              fontFamily: "'Luckiest Guy', sans-serif",
               fontWeight: "bold",
               letterSpacing: 1,
               fontSize: "1.5rem",
