@@ -46,6 +46,7 @@ const MobileNavbar = () => {
         borderBottom: `1px solid ${colors.outline}`,
         boxShadow: `0 4px 0 -2px ${colors.secondary}`,
         zIndex: 1100,
+        paddingTop: 1,
       }}
     >
       <Toolbar
@@ -77,24 +78,34 @@ const MobileNavbar = () => {
           />
         </Box>
 
-        {/* Title in the center */}
+        {/* Title in the center - Improved version */}
         <Box sx={{ width: "34%", display: "flex", justifyContent: "center" }}>
           <Typography
             variant="h6"
             component="div"
             sx={{
-              fontFamily: "'Luckiest Guy', sans-serif",
-              fontWeight: "bold",
-              letterSpacing: 1,
-              fontSize: "1.5rem",
+              fontFamily: "'Bebas Neue', 'Impact', sans-serif",
+              fontWeight: 400,
+              letterSpacing: "0.2em",
+              fontSize: "1.8rem",
               color: colors.dark,
               textTransform: "uppercase",
               lineHeight: 1,
               whiteSpace: "nowrap",
-              fontStyle: "normal !important",
-              fontFeatureSettings: "'liga' off",
-              WebkitFontSmoothing: "antialiased",
-              MozOsxFontSmoothing: "grayscale",
+              textShadow: `
+                1px 1px 0 ${colors.outline},
+                -1px -1px 0 ${colors.light},
+                2px 2px 4px rgba(0,0,0,0.1)`,
+              position: "relative",
+              "&:after": {
+                content: '""',
+                position: "absolute",
+                bottom: "-2px",
+                left: 0,
+                right: 0,
+                height: "2px",
+                background: `linear-gradient(90deg, transparent, ${colors.outline}, transparent)`,
+              },
             }}
           >
             HAWKEYE

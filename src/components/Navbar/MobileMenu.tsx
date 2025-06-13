@@ -390,7 +390,7 @@ const MobileMenu = () => {
           backgroundColor: colors.light,
           border: `3px solid ${colors.outline}`,
           borderRadius: "12px",
-          padding: "8px",
+          padding: "6px",
           boxShadow: `4px 4px 0px ${colors.outline}`,
           transition: "all 0.2s",
           "& svg": {
