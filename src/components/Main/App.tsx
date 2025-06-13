@@ -57,11 +57,11 @@ const App = () => {
           backgroundColor: colors.background,
         }}
       >
-        <Box sx={{ padding: 10 }}>
+        <Box sx={{ padding: { xs: 5, sm: 10 } }}>
           <Navbar />
         </Box>
 
-        <Container sx={{ paddingBottom: 6 }}>
+        <Container sx={{ paddingBottom: { sm: 6, xs: 3 } }}>
           <TickerCarousel colors={carouselColors} />
         </Container>
 
