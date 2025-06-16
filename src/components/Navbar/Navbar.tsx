@@ -12,6 +12,7 @@ import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material";
 import MobileMenu from "./MobileMenu";
 import PCMenuDrawer from "./PCMenu";
+import { comicFonts } from "../../utils/comicFonts";
 
 interface Props {
   window?: () => Window;
@@ -84,28 +85,18 @@ const MobileNavbar = () => {
             variant="h6"
             component="div"
             sx={{
-              fontFamily: "'Bebas Neue', 'Impact', sans-serif",
-              fontWeight: 400,
-              letterSpacing: "0.2em",
-              fontSize: "1.8rem",
+              fontFamily: comicFonts.title,
+              // fontWeight: 400,
+              fontSize: "bold",
               color: colors.dark,
               textTransform: "uppercase",
-              lineHeight: 1,
-              whiteSpace: "nowrap",
-              textShadow: `
-                1px 1px 0 ${colors.outline},
-                -1px -1px 0 ${colors.light},
-                2px 2px 4px rgba(0,0,0,0.1)`,
-              position: "relative",
-              "&:after": {
-                content: '""',
-                position: "absolute",
-                bottom: "-2px",
-                left: 0,
-                right: 0,
-                height: "2px",
-                background: `linear-gradient(90deg, transparent, ${colors.outline}, transparent)`,
-              },
+              // lineHeight: 1,
+              // whiteSpace: "nowrap",
+              textShadow: `3px 1px 0px ${colors.outline}`,
+              letterSpacing: "1px",
+              display: "inline-block",
+              transform: "rotate(-1deg)",
+              textAlign: "center",
             }}
           >
             HAWKEYE
