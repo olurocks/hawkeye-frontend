@@ -86,13 +86,13 @@ const MobileNavbar = () => {
             component="div"
             sx={{
               fontFamily: comicFonts.title,
-              // fontWeight: 400,
+              fontWeight: "bold",
               fontSize: "bold",
               color: colors.dark,
               textTransform: "uppercase",
               // lineHeight: 1,
               // whiteSpace: "nowrap",
-              textShadow: `3px 1px 0px ${colors.outline}`,
+              // textShadow: `3px 1px 0px ${colors.outline}`,
               letterSpacing: "1px",
               display: "inline-block",
               transform: "rotate(-1deg)",
