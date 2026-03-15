@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
+    "types": ["node", "@types/babel__core", "@types/babel__generator", "@types/babel__template", "@types/babel__traverse"],
     "lib": [
       "dom",
       "dom.iterable",
@@ -21,6 +22,8 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
+    "src",
+    "node_modules/@types"
+
   ]
 }
